@@ -1,29 +1,7 @@
 phases:
-- phase: Linux
-  queue:
-    name: Hosted Linux Preview
-    timeoutInMinutes: 90
-    parallel: 2
-    matrix:
-      release_default:
-        _command: ./mono/cibuild.sh
-        _args: release
-      release_fcs:
-        _command: ./fcs/build.sh
-        _args: Build
-  steps:
-    - script: $(_command) $(_args)
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/tests/TestResults'
-        ArtifactName: 'Linux $(_command) $(_args)'
-        publishLocation: Container
-      continueOnError: true
-      condition: failed()
-
 - phase: Windows
   queue:
-    name: Hosted VS2017
+    name: Perf Pool - Windows
     timeoutInMinutes: 90
     parallel: 7
     matrix:
