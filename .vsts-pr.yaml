@@ -3,29 +3,11 @@ phases:
   queue:
     name: Perf Pool - Windows
     timeoutInMinutes: 90
-    parallel: 7
+    parallel: 1
     matrix:
-      ci_part1:
-        _command: build.cmd
-        _args: release ci_part1
       ci_part2:
         _command: build.cmd
         _args: release ci_part2
-      ci_part3:
-        _command: build.cmd
-        _args: release ci_part3
-      ci_part4:
-        _command: build.cmd
-        _args: release ci_part4
-      debug_default:
-        _command: build.cmd
-        _args: debug
-      net40_no_vs:
-        _command: build.cmd
-        _args: release net40
-      release_fcs:
-        _command: fcs\build.cmd
-        _args: TestAndNuget
   steps:
     - script: $(_command) $(_args)
     - task: PublishBuildArtifacts@1
