@@ -33,4 +33,4 @@ phases:
         ArtifactName: 'Windows $(_command) $(_args)'
         publishLocation: Container
       continueOnError: true
-      condition: failed()
+      
